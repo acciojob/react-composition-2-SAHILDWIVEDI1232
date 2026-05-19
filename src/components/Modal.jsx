@@ -3,17 +3,9 @@ import React, { useState } from "react";
 function Modal({ children }) {
   const [show, setShow] = useState(false);
 
-  const handleOverlayClick = () => {
-    setShow(false);
-  };
-
-  const handleBoxClick = (e) => {
-    e.stopPropagation(); // IMPORTANT (overlay close se bachane ke liye)
-  };
-
   return (
     <>
-      {/* Open Button */}
+      {/* OPEN BUTTON */}
       <button
         onClick={() => setShow(true)}
         style={{
@@ -22,20 +14,22 @@ function Modal({ children }) {
           padding: "10px 15px",
           border: "none",
           borderRadius: "5px",
-          cursor: "pointer",
-          marginBottom: "20px"
+          cursor: "pointer"
         }}
       >
         Show Modal
       </button>
 
-      {/* Overlay */}
+      {/* MODAL */}
       {show && (
-        <div className="model-overlay" onClick={handleOverlayClick}>
-          
-          {/* Modal Box */}
-          <div className="model-box" onClick={handleBoxClick}>
-            
+        <div
+          className="model-overlay"
+          onClick={() => setShow(false)}   // ✅ OUTSIDE CLICK CLOSE
+        >
+          <div
+            className="model-box"
+            onClick={(e) => e.stopPropagation()} // ✅ prevent inner click close
+          >
             <button
               className="model-close"
               onClick={() => setShow(false)}
@@ -45,16 +39,18 @@ function Modal({ children }) {
                 padding: "8px 12px",
                 border: "none",
                 borderRadius: "5px",
-                cursor: "pointer",
-                marginBottom: "10px"
+                cursor: "pointer"
               }}
             >
               Close
             </button>
 
-            <p className="model-p">{children}</p>
-          </div>
+            {/* IMPORTANT FIX FOR TEST 2 */}
+            <div className="model">
+              <p>{children}</p>
+            </div>
 
+          </div>
         </div>
       )}
     </>
