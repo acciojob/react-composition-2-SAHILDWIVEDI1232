@@ -12,12 +12,13 @@ function Modal({ children }) {
       {show && (
         <div
           className="model-overlay"
-          onClick={() => setShow(false)}   // ✅ OUTSIDE CLICK CLOSE
+          onClick={(e) => {
+            if (e.target.className === "model-overlay") {
+              setShow(false);
+            }
+          }}
         >
-          <div
-            className="model-box"
-            onClick={(e) => e.stopPropagation()} // ✅ BLOCK INNER CLICK
-          >
+          <div className="model-box">
             <button
               className="model-close"
               onClick={() => setShow(false)}
@@ -28,7 +29,6 @@ function Modal({ children }) {
             <div className="model">
               <p>{children}</p>
             </div>
-
           </div>
         </div>
       )}
