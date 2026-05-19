@@ -6,17 +6,7 @@ function Modal({ children }) {
   return (
     <>
       {/* OPEN BUTTON */}
-      <button
-        onClick={() => setShow(true)}
-        style={{
-          backgroundColor: "brown",
-          color: "white",
-          padding: "10px 15px",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer"
-        }}
-      >
+      <button onClick={() => setShow(true)}>
         Show Modal
       </button>
 
@@ -28,24 +18,16 @@ function Modal({ children }) {
         >
           <div
             className="model-box"
-            onClick={(e) => e.stopPropagation()} // ✅ prevent inner click close
+            onClick={(e) => e.stopPropagation()} // ✅ prevent inner close
           >
             <button
               className="model-close"
               onClick={() => setShow(false)}
-              style={{
-                backgroundColor: "red",
-                color: "white",
-                padding: "8px 12px",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer"
-              }}
             >
               Close
             </button>
 
-            {/* IMPORTANT FIX FOR TEST 2 */}
+            {/* IMPORTANT FOR CYPRESS CHILD TEST */}
             <div className="model">
               <p>{children}</p>
             </div>
