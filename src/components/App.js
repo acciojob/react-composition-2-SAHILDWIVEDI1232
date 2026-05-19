@@ -4,9 +4,9 @@ import Modal from "./Modal";
 function App() {
   return (
     <div>
-      <ModalComponent>
+      <Modal>
         This is the content of the modal.
-      </ModalComponent>
+      </Modal>
     </div>
   );
 }
