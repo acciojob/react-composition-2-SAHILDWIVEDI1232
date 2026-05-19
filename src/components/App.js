@@ -1,13 +1,14 @@
-
 import React from "react";
-import './../styles/App.css';
+import Modal from "./Modal";
 
-const App = () => {
+function App() {
   return (
     <div>
-        {/* Do not remove the main div */}
+      <ModalComponent>
+        This is the content of the modal.
+      </ModalComponent>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
