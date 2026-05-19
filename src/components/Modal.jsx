@@ -5,12 +5,10 @@ function Modal({ children }) {
 
   return (
     <>
-      {/* OPEN BUTTON */}
       <button onClick={() => setShow(true)}>
         Show Modal
       </button>
 
-      {/* MODAL */}
       {show && (
         <div
           className="model-overlay"
@@ -18,7 +16,7 @@ function Modal({ children }) {
         >
           <div
             className="model-box"
-            onClick={(e) => e.stopPropagation()} // ✅ prevent inner close
+            onClick={(e) => e.stopPropagation()} // ✅ BLOCK INNER CLICK
           >
             <button
               className="model-close"
@@ -27,7 +25,6 @@ function Modal({ children }) {
               Close
             </button>
 
-            {/* IMPORTANT FOR CYPRESS CHILD TEST */}
             <div className="model">
               <p>{children}</p>
             </div>
