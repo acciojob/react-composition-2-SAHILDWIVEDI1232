@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ModalComponent({ children }) {
+function Modal({ children }) {
   const [show, setShow] = useState(false);
 
   return (
@@ -53,4 +53,4 @@ function ModalComponent({ children }) {
   );
 }
 
-export default ModalComponent;
+export default Modal;
