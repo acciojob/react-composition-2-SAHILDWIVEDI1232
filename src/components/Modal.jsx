@@ -3,6 +3,14 @@ import React, { useState } from "react";
 function Modal({ children }) {
   const [show, setShow] = useState(false);
 
+  const handleOverlayClick = () => {
+    setShow(false);
+  };
+
+  const handleBoxClick = (e) => {
+    e.stopPropagation(); // IMPORTANT (overlay close se bachane ke liye)
+  };
+
   return (
     <>
       {/* Open Button */}
@@ -23,10 +31,10 @@ function Modal({ children }) {
 
       {/* Overlay */}
       {show && (
-        <div className="model-overlay">
+        <div className="model-overlay" onClick={handleOverlayClick}>
           
           {/* Modal Box */}
-          <div className="model-box">
+          <div className="model-box" onClick={handleBoxClick}>
             
             <button
               className="model-close"
