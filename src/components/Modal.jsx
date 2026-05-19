@@ -12,10 +12,10 @@ function Modal({ children }) {
       {show && (
         <div
           className="model-overlay"
-          onClick={(e) => {
-            if (e.target.className === "model-overlay") {
+          onClick={() => {
+             
               setShow(false);
-            }
+            
           }}
         >
           <div className="model-box">
